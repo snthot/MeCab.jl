@@ -19,7 +19,7 @@ mutable struct Mecab
   ptr::Ptr{Nothing}
 
   function Mecab(option::String = "")
-    argv = vcat("mecab", split(option))
+    argv = String.(vcat("mecab", split(option)))
     ptr = ccall(
       (:mecab_new, libmecab),
       Ptr{Nothing},
