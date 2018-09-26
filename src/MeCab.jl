@@ -70,18 +70,9 @@ end
 
 function create_node(raw::MecabRawNode)
   MecabNode(
-    create_surface(raw),
+    unsafe_string(raw.surface, raw.length),
     unsafe_string(raw.feature),
   )
-end
-
-function create_surface(raw::MecabRawNode)
-  local surface::String
-  surface = try
-     unsafe_string(raw.surface, raw.length)
-  catch
-     unsafe_string(raw.surface)
-  end
 end
 
 function create_nodes(raw::Ptr{MecabRawNode})
@@ -101,7 +92,7 @@ function create_surfaces(raw::Ptr{MecabRawNode})
   while raw != C_NULL
     _raw = unsafe_load(raw)
     if _raw.length != 0
-      push!(ret, create_surface(_raw))
+      push!(ret, unsafe_string(_raw.surface, _raw.length))
     end
     raw = _raw.next
   end
