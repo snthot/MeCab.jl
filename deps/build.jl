@@ -47,7 +47,7 @@ function install_ipadic()
     mecabconfig = joinpath(BinDeps.depsdir(mecab), "usr", "bin", "mecab-config")
 
     # download
-    url = "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7MWVlSDBCSXZMTXM"
+    url = "http://sourceforge.net/projects/mecab/files/mecab-ipadic/2.7.0-20070801/mecab-ipadic-2.7.0-20070801.tar.gz"
     cd(BinDeps.downloadsdir(mecab))
     filename = "mecab-ipadic-$(ipadic_version).tar.gz"
     if !isfile(joinpath(BinDeps.downloadsdir(mecab), filename))
