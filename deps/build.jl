@@ -9,7 +9,7 @@ ignore_paths = split(strip(get(ENV, "MECABJL_LIBRARY_IGNORE_PATH", "")), ':')
 validate = function(libpath, handle)
     for path in ignore_paths
         isempty(path) && continue
-        ismatch(Regex("^$(path)"), libpath) && return false
+        occursin(Regex("^$(path)"), libpath) && return false
     end
     return true
 end
