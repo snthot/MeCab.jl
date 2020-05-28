@@ -1,5 +1,4 @@
 using BinDeps
-using Compat
 
 @BinDeps.setup
 
@@ -38,7 +37,7 @@ provides(SimpleBuild,
               end
            end), mecab, os = :Unix)
 
-@BinDeps.install @compat Dict(:libmecab => :libmecab)
+@BinDeps.install Dict(:libmecab => :libmecab)
 
 # mecab-ipadic install
 
